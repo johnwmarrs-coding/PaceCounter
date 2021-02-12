@@ -3,7 +3,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Text,
-  View
+  View,
+  Alert
 } from 'react-native'
 
 class App extends Component {
@@ -28,15 +29,20 @@ class App extends Component {
 
   incrementCount = () => {
     if (!this.state.running){
-      this.setState({
-        count: this.state.count + 1,
-      })
-      this.startTimer()
-    }else {
-      this.setState({
-        count: this.state.count + 1
-      })
+      this.startTimer();
     }
+    this.setState({
+      count: this.state.count + 1
+    })
+  }
+
+  decrementCount = () => {
+    if (!this.state.running){
+      this.startTimer();
+    }
+    this.setState({
+      count: this.state.count - 1,
+    })
   }
 
   resetCount = () => {
@@ -46,6 +52,7 @@ class App extends Component {
     this.stopTimer();
   }
 
+
   render() {
     return (
       <View style={styles.container}>
@@ -54,8 +61,11 @@ class App extends Component {
         <TouchableOpacity style={styles.buttonPrimary} onPress={this.incrementCount}>
           <Text style={styles.secondaryText}>Increment</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonSecondary} onPress={this.resetCount}>
-          <Text style={styles.secondaryText}>Reset</Text>
+        <TouchableOpacity style={styles.buttonSecondary} onPress={this.decrementCount}>
+          <Text style={styles.secondaryText}>Decrement</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonTertiary} onPress={this.resetCount}>
+          <Text>Reset</Text>
         </TouchableOpacity>
       </View>
     )
@@ -72,20 +82,32 @@ const styles = StyleSheet.create({
   buttonPrimary: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#33ffdd',
+    backgroundColor: '#69d2ff',
     padding: 10,
     marginBottom: 10,
     width: '70%',
-    height: 100
+    height: 75,
+    maxWidth: 350
   },
   buttonSecondary: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ff675c',
+    padding: 10,
+    marginBottom: 10,
+    width: '70%',
+    height: 75,
+    maxWidth: 350
+  },
+  buttonTertiary: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
     padding: 10,
     marginBottom: 10,
-    width: '40%',
-    height: 50
+    width: '35%',
+    height: 25,
+    maxWidth: 100
   },
   primaryText: {
     padding: 10,
@@ -96,7 +118,7 @@ const styles = StyleSheet.create({
   secondaryText: {
     padding: 10,
     marginBottom: 10,
-    fontSize: 32,
+    fontSize: 28,
   }
 })
 
