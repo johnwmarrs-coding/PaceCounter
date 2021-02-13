@@ -52,6 +52,19 @@ class App extends Component {
     this.stopTimer();
   }
 
+  resetAlert = () => {
+    console.log('Reset alert function called');
+    Alert.alert('Confirm Reset', 'Please confirm that you want to reset.', [
+      {
+        text: 'Cancel',
+        onPress: () => {}
+      }, {
+        text: 'Reset',
+        onPress: this.resetCount
+      }
+    ]);
+  }
+
 
   render() {
     return (
@@ -64,7 +77,7 @@ class App extends Component {
         <TouchableOpacity style={styles.buttonSecondary} onPress={this.decrementCount}>
           <Text style={styles.secondaryText}>Decrement</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonTertiary} onPress={this.resetCount}>
+        <TouchableOpacity style={styles.buttonTertiary} onPress={this.resetAlert}>
           <Text>Reset</Text>
         </TouchableOpacity>
       </View>
