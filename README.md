@@ -17,7 +17,7 @@ React Native Environment Setup(https://reactnative.dev/docs/environment-setup)
 
 ### Planned Improvements
 * Allow users to change pace unit
-* Change button sizes to feel more natural
-* Add reset button in top menu bar
-* Add decrement button
+* Change button sizes to feel more natural (Completed)
+* Add reset warning alert for reset button (Completed)
+* Add decrement button (Completed)
 * Add indicator to show last button pressed
