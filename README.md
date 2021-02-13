@@ -24,4 +24,4 @@ supported by the web.
 * Change button sizes to feel more natural (Completed)
 * Add reset warning alert for reset button (Completed)
 * Add decrement button (Completed)
-* Add indicator to show last button pressed
+* Add indicator to show last button pressed (Completed)

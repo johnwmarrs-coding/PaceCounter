@@ -12,7 +12,8 @@ class App extends Component {
     count: 0,
     running: false,
     start: 0,
-    time: 1
+    time: 1, 
+    last: 'None'
   }
 
   startTimer = () => {
@@ -24,7 +25,7 @@ class App extends Component {
 
   stopTimer = () => {
     clearInterval(this.myInterval);
-    this.setState({start: 0, time: 1, running: false});
+    this.setState({start: 0, time: 1, running: false, last: 'None'});
   }
 
   incrementCount = () => {
@@ -32,7 +33,8 @@ class App extends Component {
       this.startTimer();
     }
     this.setState({
-      count: this.state.count + 1
+      count: this.state.count + 1,
+      last: '+'
     })
   }
 
@@ -42,6 +44,7 @@ class App extends Component {
     }
     this.setState({
       count: this.state.count - 1,
+      last: '-'
     })
   }
 
@@ -53,7 +56,6 @@ class App extends Component {
   }
 
   resetAlert = () => {
-    console.log('Reset alert function called');
     Alert.alert('Confirm Reset', 'Please confirm that you want to reset.', [
       {
         text: 'Cancel',
@@ -65,12 +67,17 @@ class App extends Component {
     ]);
   }
 
+  componentWillUnmount() {
+    this.resetCount();
+  }
+
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.primaryText}>{this.state.count}</Text>
         <Text style={styles.secondaryText}>{(this.state.count / ((this.state.time - this.state.start)/1000) * 60 * 60).toFixed(1)}/Hr</Text>
+        <Text style={styles.tertiaryText}>Last: {this.state.last}</Text>
         <TouchableOpacity style={styles.buttonPrimary} onPress={this.incrementCount}>
           <Text style={styles.secondaryText}>Increment</Text>
         </TouchableOpacity>
@@ -132,6 +139,11 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     fontSize: 28,
+  },
+  tertiaryText: {
+    padding: 10,
+    marginBottom: 10,
+    fontSize: 14
   }
 })
 
