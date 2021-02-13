@@ -15,6 +15,10 @@ have the react-native cli installed.
 
 React Native Environment Setup(https://reactnative.dev/docs/environment-setup)
 
+NOTE: You need to run the app using IOS, Android, or their corresponding emulators for
+the reset and alert functionality to work. For some reason Alert.alert() is not
+supported by the web. 
+
 ### Planned Improvements
 * Allow users to change pace unit
 * Change button sizes to feel more natural (Completed)
